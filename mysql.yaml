@@ -2,5 +2,4 @@
   hosts: MySQL
   become: yes
   roles:
-  - mysql 
-  
+  - mysql
