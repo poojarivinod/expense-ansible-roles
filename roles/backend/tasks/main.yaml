@@ -37,7 +37,7 @@
     path: /app # At this location we have package.json. The above commad read the package.json at /app and install it 
 
 - name: copy backend.service
-  ansible.builtin.template: #ansible copy module
+  ansible.builtin.template: # it will search in template folder
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
 # we are not giving remote_src: yes, because backend.service is their in ansible 
