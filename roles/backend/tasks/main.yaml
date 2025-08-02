@@ -17,8 +17,8 @@
     name: expense   
 
 - name: include from common role
-  tags: # use the tag to run the code second time
-  - deployment
+  # tags: # use the tag to run the code second time
+  # - deployment
   include_role:
     name: common
     tasks_from: main
