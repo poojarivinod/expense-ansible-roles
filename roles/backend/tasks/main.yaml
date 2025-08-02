@@ -17,6 +17,8 @@
     name: expense   
 
 - name: include from common role
+  tags: # use the tag to run the code second time
+  - deployment
   include_role:
     name: common
     tasks_from: main
@@ -39,6 +41,8 @@
 #     remote_src: yes # if backend code is not their in ansible and it is their remote machine(other location then ansible)
 
 - name: install nodejs dependency
+  tags:
+  - deployment
   community.general.npm: # ansible install nodejs dependency
     path: /app # At this location we have package.json. The above commad read the package.json at /app and install it 
 
@@ -66,6 +70,8 @@
     target: /app/schema/backend.sql
 
 - name: daemon reload and restart service
+  tags:
+  - deployment
   ansible.builtin.systemd_service: #ansible daemon reload
     enabled: true 
     state: restarted
