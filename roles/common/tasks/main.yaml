@@ -1,0 +1,15 @@
+- name: remove existing directory
+  ansible.builtin.file:
+    path: "{{ app_location }}" # backend folder is at /app, frontend folder is at /usr/share/nginx/html
+    state: absent
+
+- name: create app directory
+  ansible.builtin.file: # create directory ansible
+    path: "{{ app_location }}"
+    state: directory
+
+- name: download app code
+  ansible.builtin.unarchive: #ansible unarchive module, this will download the code and unzip
+    src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ COMPONENT }}-v2.zip
+    dest: "{{ app_location }}"
+    remote_src: yes
