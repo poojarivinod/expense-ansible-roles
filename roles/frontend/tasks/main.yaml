@@ -41,3 +41,4 @@
     dest: /etc/nginx/default.d/expense.conf
   notify:
   - restart nginx
+# we remove the 8080 in expense.conf.j2 because frontend is connected app-alb not backend, frontend is connected to app-alb at the port 80.
